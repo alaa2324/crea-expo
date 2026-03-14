@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Workshop Applicant Form</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* FIX: Prevent horizontal scrolling and "zooming" issues */
+        html, body {
+            overflow-x: hidden;
+            width: 100%;
+            position: relative;
+        }
+
+        #bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+        }
+
+        /* FIX: Positioning the Hamburger Icon */
+        .menu-toggle {
+            display: none;
+            cursor: pointer;
+            z-index: 3000;
+            color: white;
+            font-size: 24px;
+        }
+
+        @media(max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            /* FIX: Ensure the menu is accessible and slides from the RIGHT */
+            nav#nav-menu {
+                position: fixed;
+                top: 0;
+                right: -100%; /* Start off-screen */
+                width: 280px;
+                height: 100vh;
+                background: rgba(2, 6, 23, 0.95);
+                backdrop-filter: blur(15px);
+                -webkit-backdrop-filter: blur(15px);
+                display: flex;
+                flex-direction: column;
+                padding: 100px 30px;
+                gap: 20px;
+                transition: right 0.3s ease-in-out;
+                z-index: 2500;
+                border-left: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            nav#nav-menu.active {
+                right: 0; /* Slide into view */
+            }
+
+            /* Dropdown styling */
+            .dropdown-content {
+                display: none;
+                flex-direction: column;
+                padding-left: 20px;
+                border-left: 1px solid #8b5cf6;
+                margin-top: 10px;
+            }
+            .dropdown-content.show { display: flex; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="bg"></div>
+
+    <header class="topbar">
+  <div class="logo">Crea<span>Expo</span></div>
+  
+  <div class="menu-toggle" id="mobile-menu">
+    <i class="fas fa-bars"></i>
+  </div>
+
+  <nav id="nav-menu">
+    <a href="index.html">Applicant</a>
+    <div class="nav-dropdown">
+      <a href="#" id="workshops-toggle">Workshops <i class="fas fa-chevron-down"></i></a>
+      <div class="dropdown-content" id="workshops-dropdown">
+        <a href="3D.html">3D Rendering</a>
+        <a href="VR.html">VR</a>
+      </div>
+    </div>
+    <a href="info.html">Info</a>
+  </nav>
+</header>
+
+
+    <section class="hero">
+        <h1>Workshop Applicant Form</h1>
+        <p>Register for university workshops and develop your skills</p>
+    </section>
+
+    <section class="form-container">
+        <form id="form">
+            <div class="grid">
+                <div class="field">
+                    <label>Full Name</label>
+                    <input name="name" required>
+                </div>
+                <div class="field">
+                    <label>Email</label>
+                    <input type="email" name="email" required>
+                </div>
+                <div class="field">
+                    <label>Phone Number</label>
+                    <input type="number" name="phone" required>
+                </div>
+                <div class="field">
+                    <label>University Registration Number</label>
+                    <input type="number" name="registration" required>
+                </div>
+                <div class="field full">
+                    <label>University Year</label>
+                    <select name="year">
+                        <option>L1</option>
+                        <option>L2</option>
+                        <option>L3</option>
+                        <option>M1</option>
+                        <option>M2</option>
+                    </select>
+                </div>
+                <div class="field full">
+                    <label>Workshop</label>
+                    <select name="workshop">
+                        <option value="vr">Virtual Reality(VR)</option>
+                        <option value="3d">3D Rendering</option>
+                    </select>
+                </div>
+            </div>
+            <button id="submitBtn" type="submit" class="submit-btn">Register</button>
+        </form>
+
+        <div id="success" class="success-box">
+            Registration successful! Redirecting...
+        </div>
+    </section>
+
+    <p class="follow-title">Follow us</p>
+    <div class="social-bar">
+        <a href="https://m.youtube.com/%40creativaclub24?fbclid=PAb21jcAQgEv9leHRuA2FlbQIxMQBzcnRjBmFwcF9pZA81NjcwNjczNDMzNTI0MjcAAacrWfc3kVjCKR4ghImfB41DNReks6y8xVt0VSvpYUVRUu1NyJcfzdiEd-7hhQ_aem_OFT_a66fbA_jm24Z4r4aug" target="_blank" class="social-btn"><i class="fab fa-youtube"></i></a>
+        <a href="https://www.instagram.com/creativaclub24?igsh=aGt5YWl1dHd4MDFh" target="_blank" class="social-btn"><i class="fab fa-instagram"></i></a>
+    </div>
+
+    <footer>
+        <p>© 2026 Bakhanou</p>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
+    <script>
+        VANTA.NET({
+            el: "#bg",
+            mouseControls: true,
+            touchControls: true,
+            gyroControls: false,
+            minHeight: 200.00,
+            minWidth: 200.00,
+            scale: 1.00,
+            scaleMobile: 1.00,
+            color: 0x4f46e5,
+            backgroundColor: 0x20617,
+            points: 10.00,
+            maxDistance: 20.00,
+            spacing: 15.00
+        });
+
+        // Toggle Mobile Menu
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navMenu = document.getElementById('nav-menu');
+        const workshopsToggle = document.getElementById('workshops-toggle');
+        const workshopsDropdown = document.getElementById('workshops-dropdown');
+
+        mobileMenu.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            const icon = mobileMenu.querySelector('i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
+        });
+
+        workshopsToggle.addEventListener('click', (e) => {
+            e.preventDefault();
+            workshopsDropdown.classList.toggle('show');
+        });
+
+        // Form Logic
+        const scriptURL = "https://script.google.com/macros/s/AKfycbyOjN_ZKyvXbMJ8xHcBUGfdmK549cZVKh2KlqMLF7R_T2pCn3CtYAy6JKbzRE4yGeLv/exec";
+        const form = document.getElementById("form");
+        const successBox = document.getElementById("success");
+        const submitBtn = document.getElementById("submitBtn");
+
+        form.addEventListener("submit", e => {
+            e.preventDefault();
+            submitBtn.disabled = true;
+            submitBtn.innerText = "Submitting...";
+
+            fetch(scriptURL, { method: 'POST', body: new FormData(form), mode: 'no-cors' })
+            .then(() => {
+                const workshop = form.querySelector('[name="workshop"]').value;
+                form.style.display = "none";
+                successBox.style.display = "block";
+                setTimeout(() => {
+                    window.location.href = (workshop === "vr") ? "VR.html" : "3D.html";
+                }, 1500);
+            })
+            .catch(error => {
+                alert("Error! Please try again.");
+                submitBtn.disabled = false;
+                submitBtn.innerText = "Register";
+            });
+        });
+    </script>
+</body>
+</html>
